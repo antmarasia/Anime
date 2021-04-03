@@ -13,17 +13,24 @@ class AnimeTableViewController: UITableViewController {
 
     var animeResults: [AnimeResult] = []
     var imageCache = NSCache<AnyObject, AnyObject>()
+    lazy var resultSearchController = UISearchController()
+    var currentSearchTerm = "naruto"
 
     // MARK: - Overridden
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.searchBar.sizeToFit()
+            controller.obscuresBackgroundDuringPresentation = false
+            controller.searchBar.text = currentSearchTerm
+            tableView.tableHeaderView = controller.searchBar
+            return controller
+        })()
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        getAnimeResults()
     }
 
     // MARK: - Table view data source
@@ -84,13 +91,30 @@ class AnimeTableViewController: UITableViewController {
 
     func getAnimeResults(searchTerm: String = "naruto") {
         NetworkManager.getAnimeResults(searchTerm: searchTerm) { [weak self] (results) in
-            if let results = results, let self = self {
-                self.animeResults = results
-
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+            guard let self = self else {
+                return
             }
+
+            guard let results = results else {
+                return
+            }
+
+            self.animeResults = results
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+}
+
+extension AnimeTableViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            getAnimeResults(searchTerm: text)
+            currentSearchTerm = text
         }
     }
 

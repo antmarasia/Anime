@@ -16,7 +16,19 @@ class NetworkManager {
             let results: [AnimeResult]
         }
 
-        var request = URLRequest(url: URL(string: "https://api.jikan.moe/v3/search/anime?q=\(searchTerm)")!,timeoutInterval: Double.infinity)
+        guard let escapedString = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            print("Can't encode search term")
+            completion(nil)
+            return
+        }
+
+        guard let url = URL(string: "https://api.jikan.moe/v3/search/anime?q=\(escapedString)") else {
+            print("Can't create url")
+            completion(nil)
+            return
+        }
+        
+        var request = URLRequest(url: url,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
