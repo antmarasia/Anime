@@ -17,6 +17,8 @@
 		929B66862618B03600188FC5 /* AnimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B66852618B03600188FC5 /* AnimeTableViewCell.swift */; };
 		929B668B2618B16800188FC5 /* AnimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B668A2618B16800188FC5 /* AnimeResult.swift */; };
 		929B66912618B3DC00188FC5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B66902618B3DC00188FC5 /* NetworkManager.swift */; };
+		929B669E2618F0F500188FC5 /* AnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B669D2618F0F500188FC5 /* AnimeViewModel.swift */; };
+		929B66A32618F60A00188FC5 /* AnimeCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B66A22618F60A00188FC5 /* AnimeCellDelegate.swift */; };
 		92E074792617DE7400F69972 /* AnimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E074782617DE7400F69972 /* AnimeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		929B66852618B03600188FC5 /* AnimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTableViewCell.swift; sourceTree = "<group>"; };
 		929B668A2618B16800188FC5 /* AnimeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeResult.swift; sourceTree = "<group>"; };
 		929B66902618B3DC00188FC5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		929B669D2618F0F500188FC5 /* AnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewModel.swift; sourceTree = "<group>"; };
+		929B66A22618F60A00188FC5 /* AnimeCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCellDelegate.swift; sourceTree = "<group>"; };
 		92E074782617DE7400F69972 /* AnimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +109,7 @@
 		92199ACF2617C8C10075DBCB /* Anime */ = {
 			isa = PBXGroup;
 			children = (
+				929B669C2618F0DF00188FC5 /* View Model */,
 				929B66982618CB6200188FC5 /* Extensions */,
 				929B668F2618B3C400188FC5 /* Services */,
 				929B66812618A8A700188FC5 /* Models */,
@@ -116,6 +121,7 @@
 				92199ADB2617C8C20075DBCB /* LaunchScreen.storyboard */,
 				92199ADE2617C8C20075DBCB /* Info.plist */,
 				92E074782617DE7400F69972 /* AnimeTableViewController.swift */,
+				929B66A22618F60A00188FC5 /* AnimeCellDelegate.swift */,
 			);
 			path = Anime;
 			sourceTree = "<group>";
@@ -167,6 +173,14 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		929B669C2618F0DF00188FC5 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				929B669D2618F0F500188FC5 /* AnimeViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +317,10 @@
 				929B66862618B03600188FC5 /* AnimeTableViewCell.swift in Sources */,
 				929B668B2618B16800188FC5 /* AnimeResult.swift in Sources */,
 				92E074792617DE7400F69972 /* AnimeTableViewController.swift in Sources */,
+				929B66A32618F60A00188FC5 /* AnimeCellDelegate.swift in Sources */,
 				92199AD12617C8C10075DBCB /* AppDelegate.swift in Sources */,
 				92199AD32617C8C10075DBCB /* SceneDelegate.swift in Sources */,
+				929B669E2618F0F500188FC5 /* AnimeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

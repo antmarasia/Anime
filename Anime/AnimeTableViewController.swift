@@ -11,8 +11,9 @@ class AnimeTableViewController: UITableViewController {
 
     // MARK: - Properties
 
+    var animeViewModel = AnimeViewModel()
     var animeResults: [AnimeResult] = []
-    var imageCache = NSCache<AnyObject, AnyObject>()
+
     lazy var resultSearchController = UISearchController()
     var currentSearchTerm = "naruto"
 
@@ -20,6 +21,8 @@ class AnimeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        animeViewModel.animeCellDelegate = self
 
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
@@ -40,49 +43,12 @@ class AnimeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animeResults.count
+        return animeViewModel.numberOfRowsInSection()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnimeCell", for: indexPath) as! AnimeTableViewCell
-        let animeResult = animeResults[indexPath.row]
-
-        cell.titleLabel.text = animeResult.title
-        cell.synopsisLabel.text = animeResult.synopsis
-        cell.typeLabel.text = animeResult.type
-        cell.ratingLabel.text = "\(animeResult.score)"
-
-        // Hide episodes label if it's a movie or special
-        if animeResult.episodes > 1 {
-            cell.episodesLabel.isHidden = false
-            cell.episodesLabel.text = "Episodes: \(animeResult.episodes)"
-        } else {
-            cell.episodesLabel.isHidden = true
-        }
-
-        if let image = imageCache.object(forKey: animeResult.imageURL as NSString) as? UIImage {
-            cell.artworkImageView?.image = image
-        } else {
-            NetworkManager.getImage(url: animeResult.imageURL) { [weak self] (imageData) in
-                if let imageData = imageData, let self = self {
-                    DispatchQueue.main.async {
-
-                        // Check if cell is still visible
-                        if let updateCell = tableView.cellForRow(at: indexPath) as? AnimeTableViewCell {
-                            if let image = UIImage(data: imageData) {
-
-                                updateCell.artworkImageView?.image = image
-                                updateCell.artworkImageView?.contentMode = .scaleAspectFit
-                                updateCell.artworkImageView?.clipsToBounds = true
-                                self.imageCache.setObject(image, forKey: animeResult.imageURL as NSString)
-                                self.tableView.reloadRows(at: [indexPath], with: .none)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
+        animeViewModel.configure(cell: cell, indexPath: indexPath)
         return cell
     }
 
@@ -99,7 +65,7 @@ class AnimeTableViewController: UITableViewController {
                 return
             }
 
-            self.animeResults = results
+            self.animeViewModel.setResults(results)
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -109,6 +75,8 @@ class AnimeTableViewController: UITableViewController {
 
 }
 
+// MARK: - UISearchResultsUpdating
+
 extension AnimeTableViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
@@ -116,6 +84,20 @@ extension AnimeTableViewController: UISearchResultsUpdating {
             getAnimeResults(searchTerm: text)
             currentSearchTerm = text
         }
+    }
+
+}
+
+// MARK: - AnimeCellDelegate
+
+extension AnimeTableViewController: AnimeCellDelegate {
+
+    func getCellForRow(at indexPath: IndexPath) -> UITableViewCell? {
+        return self.tableView.cellForRow(at: indexPath)
+    }
+
+    func reloadRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
+        self.tableView.reloadRows(at: indexPaths, with: animation)
     }
 
 }
