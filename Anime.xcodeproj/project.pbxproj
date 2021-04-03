@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		92199AD12617C8C10075DBCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92199AD02617C8C10075DBCB /* AppDelegate.swift */; };
 		92199AD32617C8C10075DBCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92199AD22617C8C10075DBCB /* SceneDelegate.swift */; };
-		92199AD52617C8C10075DBCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92199AD42617C8C10075DBCB /* ViewController.swift */; };
 		92199AD82617C8C10075DBCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92199AD62617C8C10075DBCB /* Main.storyboard */; };
 		92199ADA2617C8C20075DBCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92199AD92617C8C20075DBCB /* Assets.xcassets */; };
 		92199ADD2617C8C20075DBCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92199ADB2617C8C20075DBCB /* LaunchScreen.storyboard */; };
 		92199AE82617C8C20075DBCB /* AnimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92199AE72617C8C20075DBCB /* AnimeTests.swift */; };
 		92199AF32617C8C30075DBCB /* AnimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92199AF22617C8C30075DBCB /* AnimeUITests.swift */; };
+		929B66862618B03600188FC5 /* AnimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B66852618B03600188FC5 /* AnimeTableViewCell.swift */; };
+		929B668B2618B16800188FC5 /* AnimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B668A2618B16800188FC5 /* AnimeResult.swift */; };
+		929B66912618B3DC00188FC5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B66902618B3DC00188FC5 /* NetworkManager.swift */; };
+		92E074792617DE7400F69972 /* AnimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E074782617DE7400F69972 /* AnimeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,6 @@
 		92199ACD2617C8C10075DBCB /* Anime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92199AD02617C8C10075DBCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92199AD22617C8C10075DBCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		92199AD42617C8C10075DBCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		92199AD72617C8C10075DBCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92199AD92617C8C20075DBCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92199ADC2617C8C20075DBCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		92199AEE2617C8C30075DBCB /* AnimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92199AF22617C8C30075DBCB /* AnimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeUITests.swift; sourceTree = "<group>"; };
 		92199AF42617C8C30075DBCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		929B66852618B03600188FC5 /* AnimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTableViewCell.swift; sourceTree = "<group>"; };
+		929B668A2618B16800188FC5 /* AnimeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeResult.swift; sourceTree = "<group>"; };
+		929B66902618B3DC00188FC5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		92E074782617DE7400F69972 /* AnimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +105,17 @@
 		92199ACF2617C8C10075DBCB /* Anime */ = {
 			isa = PBXGroup;
 			children = (
+				929B66982618CB6200188FC5 /* Extensions */,
+				929B668F2618B3C400188FC5 /* Services */,
+				929B66812618A8A700188FC5 /* Models */,
+				929B66802618A89100188FC5 /* Views */,
 				92199AD02617C8C10075DBCB /* AppDelegate.swift */,
 				92199AD22617C8C10075DBCB /* SceneDelegate.swift */,
-				92199AD42617C8C10075DBCB /* ViewController.swift */,
 				92199AD62617C8C10075DBCB /* Main.storyboard */,
 				92199AD92617C8C20075DBCB /* Assets.xcassets */,
 				92199ADB2617C8C20075DBCB /* LaunchScreen.storyboard */,
 				92199ADE2617C8C20075DBCB /* Info.plist */,
+				92E074782617DE7400F69972 /* AnimeTableViewController.swift */,
 			);
 			path = Anime;
 			sourceTree = "<group>";
@@ -126,6 +136,37 @@
 				92199AF42617C8C30075DBCB /* Info.plist */,
 			);
 			path = AnimeUITests;
+			sourceTree = "<group>";
+		};
+		929B66802618A89100188FC5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				929B66852618B03600188FC5 /* AnimeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		929B66812618A8A700188FC5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				929B668A2618B16800188FC5 /* AnimeResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		929B668F2618B3C400188FC5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				929B66902618B3DC00188FC5 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		929B66982618CB6200188FC5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +299,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92199AD52617C8C10075DBCB /* ViewController.swift in Sources */,
+				929B66912618B3DC00188FC5 /* NetworkManager.swift in Sources */,
+				929B66862618B03600188FC5 /* AnimeTableViewCell.swift in Sources */,
+				929B668B2618B16800188FC5 /* AnimeResult.swift in Sources */,
+				92E074792617DE7400F69972 /* AnimeTableViewController.swift in Sources */,
 				92199AD12617C8C10075DBCB /* AppDelegate.swift in Sources */,
 				92199AD32617C8C10075DBCB /* SceneDelegate.swift in Sources */,
 			);
